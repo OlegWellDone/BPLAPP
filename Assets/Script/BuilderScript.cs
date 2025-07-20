@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BuilderScript : MonoBehaviour
@@ -6,13 +7,23 @@ public class BuilderScript : MonoBehaviour
 
     //private GameObject[] motor; //nu ty ponyal
     private GameObject[] propeller; //propeller
-    private GameObject[] krepezh; //krepezh
+    private List<GameObject> krepezh = new List<GameObject>(); //krepezh
     private GameObject[] poletstack; //holder
     private GameObject[] core; //core
     private GameObject[] furniture; //base
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+        foreach (Transform child in BPLAModel.GetComponentsInChildren<Transform>(true))
+        {
+            if (child.gameObject.CompareTag("Krepezh"))
+            {
+                krepezh.Add(child.gameObject);
+            }
+        }
+
+        Debug.Log(krepezh.Capacity);
         //BPLAModel.GetComponentInChildren<GameObject>().CompareTag("Krepezh")
     }
 
