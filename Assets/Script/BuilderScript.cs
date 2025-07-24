@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BuilderScript : MonoBehaviour
 {
+    [SerializeField] private GameObject meObject;
     [SerializeField] private GameObject BPLAModel;
 
     [SerializeField] private Material NewMaterial;
@@ -10,7 +11,7 @@ public class BuilderScript : MonoBehaviour
     [SerializeField] private Material OldMaterial;
     //[SerializeField] string[] TagsInModel;//можем так задавать используемые тэги
     //private GameObject[] motor; //nu ty ponyal
-
+    private Infoobject InfoScript;
     private List<GameObject> propeller = new List<GameObject>(); //propeller
 
     private List<GameObject> krepezh = new List<GameObject>(); //krepezh
@@ -21,11 +22,11 @@ public class BuilderScript : MonoBehaviour
 
     private List<GameObject> furniture = new List<GameObject>(); //base
 
+
     private int stage = 1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
         foreach (Transform child in BPLAModel.GetComponentsInChildren<Transform>(true))
         {
             switch (child.gameObject.tag)
@@ -33,6 +34,8 @@ public class BuilderScript : MonoBehaviour
                 case "Krepezh":
                     {
                         krepezh.Add(child.gameObject);
+
+
                     }
                     break;
                 case "Propeller":
@@ -57,8 +60,9 @@ public class BuilderScript : MonoBehaviour
                     break;
                 default:
                     {
-                    
-                    } break;
+
+                    }
+                    break;
             }
             child.gameObject.SetActive(false);
         }
@@ -69,7 +73,6 @@ public class BuilderScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void SetOldModel(string previousTag)
@@ -89,11 +92,17 @@ public class BuilderScript : MonoBehaviour
         {
             case 1:
                 {
+
                     for (int i = 0; i < furniture.Count; i++)
                     {
                         furniture[i].SetActive(true);
                         furniture[i].GetComponent<MeshRenderer>().material = NewMaterial;
+                        //Артём нахуевертил тута
+                        meObject.GetComponent<Infoobject>().setInfoObject(furniture[i]);
+                        //InfoScript.setInfoObject(furniture[i]);
+                        //Instantiate(furniture[i], new Vector3(1000, 1000, 1000), Quaternion.identity);
                     }
+                    
                 }
                 break;
             case 2:
@@ -103,6 +112,8 @@ public class BuilderScript : MonoBehaviour
                     {
                         core[i].SetActive(true);
                         core[i].GetComponent<MeshRenderer>().material = NewMaterial;
+                        //Артём нахуевертил тута
+                        meObject.GetComponent<Infoobject>().setInfoObject(core[i]);
                     }
                 }
                 break;
@@ -142,6 +153,7 @@ public class BuilderScript : MonoBehaviour
                 }
                 break;
         }
+        
         stage++;
     }
 }
