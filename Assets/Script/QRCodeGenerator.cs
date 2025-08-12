@@ -3,7 +3,6 @@ using ZXing.QrCode;
 using ZXing;
 using TMPro;
 using UnityEngine.UI;
-using UnityEditor.ShaderGraph.Internal;
 
 public class QRCodeGenerator : MonoBehaviour
 {
