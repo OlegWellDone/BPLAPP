@@ -10,19 +10,19 @@ public class QRCodeScanner : MonoBehaviour
     [SerializeField] private TextMeshProUGUI outputText;
     [SerializeField] private RectTransform scanZone;
 
-    private bool isCamAvaliable;
+    private bool isCamAvaliable = false;
     private WebCamTexture cameraImage;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        SetupCamera();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        UpdateCameraRender();
     }
 
     private void SetupCamera()
