@@ -55,7 +55,7 @@ public class BuilderScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void SetOldModel(int oldStage)
@@ -83,7 +83,7 @@ public class BuilderScript : MonoBehaviour
                 stagesOfBuild[stage][i].GetComponent<MeshRenderer>().material = NewMaterial;
 
                 //Артём нахуевертил тута
-                //meObject.GetComponent<Infoobject>().setInfoObject(stagesOfBuild[stage]);
+                meObject.GetComponent<Infoobject>().setInfoObject(stagesOfBuild[stage][i]);
             }
             if (stage > 1)
             {
@@ -107,3 +107,4 @@ public class BuilderScript : MonoBehaviour
         }
     }
 }
+
