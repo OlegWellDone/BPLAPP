@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/QRGeneratorScene.unity
     guid: 1f6fb21708e46bb4db96b3c25bd0837a
+  - enabled: 1
+    path: Assets/Scenes/SpecInfo.unity
+    guid: 5eb0e0295d1dda944a871cd9e452d116
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 3a50aec49fd14984484e406d0ba8cbd1, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 041bacf12de48bc4bb77924df5875185, type: 2}
