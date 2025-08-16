@@ -10,6 +10,8 @@ public class QRCodeScanner : MonoBehaviour
     [SerializeField] private TextMeshProUGUI outputText;
     [SerializeField] private RectTransform scanZone;
 
+    [SerializeField] private GameObject panelApprove;
+
     private bool isCamAvaliable = false;
     private WebCamTexture cameraImage;
 
@@ -68,6 +70,7 @@ public class QRCodeScanner : MonoBehaviour
     public void OnClickScan()
     {
         Scan();
+        panelApprove.SetActive(true);
     }
 
     private void Scan()
