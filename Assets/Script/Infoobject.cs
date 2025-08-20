@@ -19,6 +19,14 @@ public class Infoobject : MonoBehaviour
     {
         infoRawImage.SetActive(false);
     }
+    public void plusScale()
+    {
+        infoObject.transform.localScale += new Vector3(200,200,200);
+    }
+        public void minusScale()
+    {
+        infoObject.transform.localScale -= new Vector3(200,200,200);
+    }
     public void setInfoObject(GameObject newInfoObject)
     {
         infoObject.GetComponent<MeshFilter>().mesh = newInfoObject.GetComponent<MeshFilter>().mesh;

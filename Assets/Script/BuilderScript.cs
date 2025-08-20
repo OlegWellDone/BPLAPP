@@ -101,8 +101,9 @@ public class BuilderScript : MonoBehaviour
             for (int i = 0; i < stagesOfBuild[stage - 2].Count; i++)
             {
                 stagesOfBuild[stage - 2][i].GetComponent<MeshRenderer>().material = NewMaterial;
+                meObject.GetComponent<Infoobject>().setInfoObject(stagesOfBuild[stage - 2][i]);
             }
-            ;
+            
             stage--;
         }
     }
