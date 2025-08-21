@@ -77,11 +77,12 @@ public class QRCodeScanner : MonoBehaviour
     {
         try
         {
-            IBarcodeReader barcodeReader = new BarcodeReader();
+            BarcodeReader barcodeReader = new BarcodeReader();
             Result res = barcodeReader.Decode(cameraImage.GetPixels32(), cameraImage.width, cameraImage.height);
             if (res != null)
             {
                 outputText.text = res.Text;
+                Handheld.Vibrate();
             }
             else
             {

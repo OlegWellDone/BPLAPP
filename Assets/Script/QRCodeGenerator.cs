@@ -45,8 +45,10 @@ public class QRCodeGenerator : MonoBehaviour
 
     private void EncodeTextToQR()
     {
+        
+        
         string textWrite = string.IsNullOrEmpty(inputText.text) ? "WriteSMTH" : inputText.text;
-
+        //byte[] utf8string = System.Text.Encoding.UTF8.GetBytes(textWrite);
         Color32[] convertedPixelToImage = Encode(textWrite, QRcode.width, QRcode.height);
         QRcode.SetPixels32(convertedPixelToImage);
         QRcode.Apply();
