@@ -11,7 +11,7 @@ public class Example : MonoBehaviour , IDragHandler
     {
         //mainObject.transform.rotation *=  Quaternion.Euler(-eventData.delta.y, eventData.delta.x, 0);
         //mainObject.transform.rotation = new  Vector3(mainObject.eulerAngles.x,-eventData.delta.y, 0);
-        mainObject.eulerAngles += new Vector3(-eventData.delta.y, eventData.delta.x);
+        mainObject.eulerAngles += new Vector3(eventData.delta.y/2, -eventData.delta.x/2);
         //Debug.Log(mainObject.eulerAngles );
     }
 }
