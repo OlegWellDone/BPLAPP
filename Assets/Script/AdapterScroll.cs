@@ -42,11 +42,11 @@ public class AdapterScroll : MonoBehaviour
         List<string> AllTags = new List<string>();
         foreach (Transform child in sampleobject.GetComponentsInChildren<Transform>(true))
         {
-            if (child.gameObject.tag == sampleobject.tag)
+            if (child.gameObject.tag == "Base")
             {
                 continue;
             }
-            AllTags.Add(child.gameObject.tag);
+            AllTags.Add(child.gameObject.name);
         }
         //просто вычитываем уникальные тэги
         HashSet<string> uniqueTags = new HashSet<string>(AllTags);

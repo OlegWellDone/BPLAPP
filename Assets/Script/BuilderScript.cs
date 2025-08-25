@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class BuilderScript : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class BuilderScript : MonoBehaviour
     [SerializeField] private GameObject BPLAModel;
     [SerializeField] private Material NewMaterial;
     [SerializeField] private Material OldMaterial;
+    [SerializeField] private TextMeshProUGUI textObject;
 
     //[SerializeField] string[] TagsInModel;//можем так задавать используемые тэги
     private Infoobject InfoScript;
@@ -22,24 +24,24 @@ public class BuilderScript : MonoBehaviour
         List<string> AllTags = new List<string>();
         foreach (Transform child in BPLAModel.GetComponentsInChildren<Transform>(true))
         {
-            if (child.gameObject.tag == BPLAModel.tag)
+            if (child.gameObject.tag == "Base")
             {
                 continue;
             }
-            AllTags.Add(child.gameObject.tag);
+            AllTags.Add(child.gameObject.name);
         }
         //просто вычитываем уникальные тэги
         HashSet<string> uniqueTags = new HashSet<string>(AllTags);
         AllTags.Clear();
         AllTags = uniqueTags.ToList();
 
-        //заполняем тэги в мапу
+        //заполняем модели в мапу
         for (int i = 0; i < AllTags.Count; i++)
         {
             List<GameObject> Temp = new List<GameObject>();
             foreach (Transform child in BPLAModel.GetComponentsInChildren<Transform>(true))
             {
-                if (child.gameObject.tag == AllTags[i])
+                if (child.gameObject.name == AllTags[i])
                 {
                     Temp.Add(child.gameObject);
                     child.gameObject.SetActive(false);
@@ -80,8 +82,8 @@ public class BuilderScript : MonoBehaviour
             for (int i = 0; i < stagesOfBuild[stage].Count; i++)
             {
                 stagesOfBuild[stage][i].SetActive(true);
-                stagesOfBuild[stage][i].GetComponent<MeshRenderer>().material = NewMaterial;
-
+                //stagesOfBuild[stage][i].GetComponent<MeshRenderer>().material = NewMaterial;
+                textObject.text = stagesOfBuild[stage][i].name;
                 //Артём нахуевертил тута
                 meObject.GetComponent<Infoobject>().setInfoObject(stagesOfBuild[stage][i]);
             }
