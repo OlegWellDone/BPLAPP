@@ -537,6 +537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainObject: {fileID: 1144036073}
   testText: {fileID: 0}
+  ScaleTrue: 0
 --- !u!1 &623354512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,6 +1028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainObject: {fileID: 1144036073}
   testText: {fileID: 0}
+  ScaleTrue: 0
 --- !u!1 &885694091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,6 +1601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainObject: {fileID: 1144036073}
   testText: {fileID: 1551938825}
+  ScaleTrue: 0
 --- !u!1 &1144036072 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4709182521625424565, guid: 4ef475a01accf4541a5acc65bae5fafb, type: 3}
@@ -2460,6 +2463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainObject: {fileID: 72114895}
   testText: {fileID: 1551938825}
+  ScaleTrue: 1
 --- !u!1 &1659500918
 GameObject:
   m_ObjectHideFlags: 0

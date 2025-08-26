@@ -13,6 +13,7 @@ public class DragImba : MonoBehaviour , IDragHandler, IEndDragHandler
     private bool kostil = false;
     private float modScale = 0.2F;
     private Vector2 swipeDelta;
+    public bool ScaleTrue;
 
     // Drag the selected item.
     public void OnDrag(PointerEventData eventData)
@@ -21,6 +22,8 @@ public class DragImba : MonoBehaviour , IDragHandler, IEndDragHandler
         switch (Input.touchCount)
         {
             case 2:
+                if (ScaleTrue)
+                {
                 float delthaTouchDistance = touchDistance - Vector2.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position);
                 testText.text = Input.GetTouch(0).position.ToString() + " " + Input.GetTouch(1).position.ToString();
                 touchDistance = Vector2.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position);
@@ -34,6 +37,7 @@ public class DragImba : MonoBehaviour , IDragHandler, IEndDragHandler
                 else
                 {
                     kostil = true;
+                }
                 }
                 break;
             default:
