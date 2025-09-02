@@ -11,7 +11,7 @@ public class DragImba : MonoBehaviour , IDragHandler, IEndDragHandler
     public TextMeshProUGUI testText;
     private float touchDistance = 0;
     private bool kostil = false;
-    private float modScale = 0.2F;
+    private float modScale = -0.1F;
     private Vector2 swipeDelta;
     public bool ScaleTrue;
 
@@ -30,7 +30,7 @@ public class DragImba : MonoBehaviour , IDragHandler, IEndDragHandler
                 if (kostil)
                 {
                     //ограничения
-                    if (mainObject.localScale.x+(delthaTouchDistance * modScale) >= 10F && mainObject.localScale.x+(delthaTouchDistance * modScale) <= 200F){
+                    if (mainObject.localScale.x+(delthaTouchDistance * modScale) >= 10F && mainObject.localScale.x+(delthaTouchDistance * modScale) <= 100F){
                         mainObject.localScale += new Vector3(delthaTouchDistance * modScale, delthaTouchDistance * modScale, delthaTouchDistance * modScale);
                     }
                 }
