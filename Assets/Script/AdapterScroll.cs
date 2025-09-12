@@ -9,14 +9,14 @@ public class AdapterScroll : MonoBehaviour
 {
     [Tooltip("айтем списка из префаба")]
     [SerializeField] RectTransform prefabItem;
-    [SerializeField] int counterItems; //будем брать исходя из элементов 3д модели
     [SerializeField] RectTransform content;
 
     [Tooltip("Это просто пример итогового объекта с которым мы пока что работаем")]
     [SerializeField] GameObject sampleobject;
 
+    //С сервера путь для картинок у каждого объекта
 
-//эту штуку мы типо должны с сервера заполнить (хз какой там тип будет)
+    //эту штуку мы типо должны с сервера заполнить (хз какой там тип будет)
     public class ItemModel
     {
         public string NameOfDetail;
@@ -38,6 +38,10 @@ public class AdapterScroll : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+        //
+
+        
         //запрашиваем данные тут с сервера в теории и должны получить модель ( или список моделей (или картинок с моделями))
         List<string> AllTags = new List<string>();
         foreach (Transform child in sampleobject.GetComponentsInChildren<Transform>(true))

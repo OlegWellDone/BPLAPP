@@ -51,7 +51,7 @@ public class BuilderScript : MonoBehaviour
             Temp.Clear();
         }
         BPLAModel.SetActive(true);
-        //Debug.Log(stagesOfBuild.Count);
+        Debug.Log(stagesOfBuild.Count);
     }
 
     // Update is called once per frame
@@ -85,7 +85,7 @@ public class BuilderScript : MonoBehaviour
                 //stagesOfBuild[stage][i].GetComponent<MeshRenderer>().material = NewMaterial;
                 textObject.text = stagesOfBuild[stage][i].name;
                 //Артём нахуевертил тута
-                meObject.GetComponent<Infoobject>().setInfoObject(stagesOfBuild[stage][i]);
+                //meObject.GetComponent<Infoobject>().setInfoObject(stagesOfBuild[stage][i]);
             }
             if (stage > 1)
             {
@@ -102,7 +102,7 @@ public class BuilderScript : MonoBehaviour
             }
             for (int i = 0; i < stagesOfBuild[stage - 2].Count; i++)
             {
-                stagesOfBuild[stage - 2][i].GetComponent<MeshRenderer>().material = NewMaterial;
+                //stagesOfBuild[stage - 2][i].GetComponent<MeshRenderer>().material = NewMaterial;
                 textObject.text = stagesOfBuild[stage- 2][i].name;
                 meObject.GetComponent<Infoobject>().setInfoObject(stagesOfBuild[stage - 2][i]);
             }
