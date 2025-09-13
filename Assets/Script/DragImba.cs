@@ -8,7 +8,6 @@ using TMPro;
 public class DragImba : MonoBehaviour , IDragHandler, IEndDragHandler 
 {
     public Transform mainObject;
-    public TextMeshProUGUI testText;
     private float touchDistance = 0;
     private bool kostil = false;
     private float modScale = -0.1F;
@@ -25,7 +24,6 @@ public class DragImba : MonoBehaviour , IDragHandler, IEndDragHandler
                 if (ScaleTrue)
                 {
                 float delthaTouchDistance = touchDistance - Vector2.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position);
-                testText.text = Input.GetTouch(0).position.ToString() + " " + Input.GetTouch(1).position.ToString();
                 touchDistance = Vector2.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position);
                 if (kostil)
                 {

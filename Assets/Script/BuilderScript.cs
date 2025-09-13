@@ -69,6 +69,15 @@ public class BuilderScript : MonoBehaviour
         }
     }
 
+    private void SetStartModel(int oldStage)
+    {
+        //Debug.Log("А мы ставим материал для прошлой детали");
+        for (int i = 0; i < stagesOfBuild[oldStage].Count; i++)
+        {
+            stagesOfBuild[oldStage][i].GetComponent<materialClassCool>().setCollor();
+        }
+    }
+
 
     private void DeactivateButton()
     {
@@ -85,7 +94,7 @@ public class BuilderScript : MonoBehaviour
                 //stagesOfBuild[stage][i].GetComponent<MeshRenderer>().material = NewMaterial;
                 textObject.text = stagesOfBuild[stage][i].name;
                 //Артём нахуевертил тута
-                //meObject.GetComponent<Infoobject>().setInfoObject(stagesOfBuild[stage][i]);
+                meObject.GetComponent<Infoobject>().setInfoObject(stagesOfBuild[stage][i]);
             }
             if (stage > 1)
             {
@@ -102,6 +111,7 @@ public class BuilderScript : MonoBehaviour
             }
             for (int i = 0; i < stagesOfBuild[stage - 2].Count; i++)
             {
+                SetStartModel(stage - 2);
                 //stagesOfBuild[stage - 2][i].GetComponent<MeshRenderer>().material = NewMaterial;
                 textObject.text = stagesOfBuild[stage- 2][i].name;
                 meObject.GetComponent<Infoobject>().setInfoObject(stagesOfBuild[stage - 2][i]);
