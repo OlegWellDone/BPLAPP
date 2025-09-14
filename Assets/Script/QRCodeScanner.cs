@@ -12,6 +12,8 @@ public class QRCodeScanner : MonoBehaviour
 
     [SerializeField] private GameObject panelApprove;
 
+    [SerializeField] private RawImage ImageOfBPLA;
+
     private bool isCamAvaliable = false;
     private WebCamTexture cameraImage;
 
@@ -71,6 +73,7 @@ public class QRCodeScanner : MonoBehaviour
     {
         Scan();
         panelApprove.SetActive(true);
+        ImageOfBPLA.texture = Resources.Load<Texture2D>(outputText.text); 
     }
 
     private void Scan()

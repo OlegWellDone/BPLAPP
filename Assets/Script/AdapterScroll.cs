@@ -83,8 +83,7 @@ public class AdapterScroll : MonoBehaviour
     {
         ViewItem view = new ViewItem(viewGB.transform);
         view.NameOnScene.text = model.NameOfDetail;
-        view.ImageOnScene = model.ImageDetail;
-
+        view.ImageOnScene.texture = Resources.Load<Texture2D>("BPLAModelDetail/" + model.NameOfDetail);
     }
     // Update is called once per frame
     void Update()

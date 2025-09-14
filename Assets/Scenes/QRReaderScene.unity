@@ -647,6 +647,7 @@ MonoBehaviour:
   outputText: {fileID: 1795020089}
   scanZone: {fileID: 801489758}
   panelApprove: {fileID: 1019013793}
+  ImageOfBPLA: {fileID: 500806266}
 --- !u!4 &377547905
 Transform:
   m_ObjectHideFlags: 0
