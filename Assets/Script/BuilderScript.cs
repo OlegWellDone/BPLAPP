@@ -3,24 +3,56 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
+//Firebase base
+using Firebase.Extensions;
+using Firebase.Database;
+using System.Numerics;
+
+
 
 public class BuilderScript : MonoBehaviour
 {
 
     private Dictionary<int, List<GameObject>> stagesOfBuild = new Dictionary<int, List<GameObject>>();
+    private Dictionary<int, string> ExplanationGuide = new Dictionary<int, string>();
     [SerializeField] private GameObject meObject;
     [SerializeField] private GameObject BPLAModel;
     [SerializeField] private Material NewMaterial;
     [SerializeField] private Material OldMaterial;
     [SerializeField] private TextMeshProUGUI textObject;
 
-    //[SerializeField] string[] TagsInModel;//можем так задавать используемые тэги
     private Infoobject InfoScript;
 
+    private DatabaseReference dbReference;
     private int stage = 1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        dbReference = FirebaseDatabase.DefaultInstance.RootReference;
+        FirebaseDatabase.DefaultInstance.GoOnline();
+        FirebaseDatabase.DefaultInstance
+            .GetReference("/")                    
+            .GetValueAsync().ContinueWithOnMainThread(task => {
+                if (task.IsFaulted)
+                {
+                    Debug.Log("Ошибка подключения к базе данных или доступа к ней");
+                    // Handle the error...
+                }
+                else if (task.IsCompleted)
+                {
+                    DataSnapshot snapshot = task.Result;
+                    foreach (DataSnapshot child in snapshot.Children)
+                    {
+                        int key = int.Parse(child.Key);
+                        string value = child.Value?.ToString();
+                        //добавить третье значение в мапу для описания и туда вставить собственно нашу последовательность сборки
+                        ExplanationGuide.Add(key, value);
+                    }
+                }
+        });
+
+
+
         List<string> AllTags = new List<string>();
         foreach (Transform child in BPLAModel.GetComponentsInChildren<Transform>(true))
         {
@@ -51,7 +83,8 @@ public class BuilderScript : MonoBehaviour
             Temp.Clear();
         }
         BPLAModel.SetActive(true);
-        Debug.Log(stagesOfBuild.Count);
+
+        //BuildBPLA(true);
     }
 
     // Update is called once per frame
@@ -77,22 +110,19 @@ public class BuilderScript : MonoBehaviour
             stagesOfBuild[oldStage][i].GetComponent<materialClassCool>().setCollor();
         }
     }
-
-
-    private void DeactivateButton()
-    {
-        gameObject.SetActive(false);
-    }
     public void BuildBPLA(bool next)
     {
         if (next && stage <= stagesOfBuild.Count)
         {
+            if (stage <= ExplanationGuide.Count)
+            {
+                textObject.text = ExplanationGuide[stage];
+            }
             //типо делаем следующий шаг
             for (int i = 0; i < stagesOfBuild[stage].Count; i++)
             {
                 stagesOfBuild[stage][i].SetActive(true);
                 //stagesOfBuild[stage][i].GetComponent<MeshRenderer>().material = NewMaterial;
-                textObject.text = stagesOfBuild[stage][i].name;
                 //Артём нахуевертил тута
                 meObject.GetComponent<Infoobject>().setInfoObject(stagesOfBuild[stage][i]);
             }
@@ -104,6 +134,7 @@ public class BuilderScript : MonoBehaviour
         }
         else if ((next == false) && (stage > 2))
         {
+            textObject.text = ExplanationGuide[stage-2];
             //очевидно делаем предыдущий шаг
             for (int i = 0; i < stagesOfBuild[stage - 1].Count; i++)
             {
@@ -113,10 +144,9 @@ public class BuilderScript : MonoBehaviour
             {
                 SetStartModel(stage - 2);
                 //stagesOfBuild[stage - 2][i].GetComponent<MeshRenderer>().material = NewMaterial;
-                textObject.text = stagesOfBuild[stage- 2][i].name;
                 meObject.GetComponent<Infoobject>().setInfoObject(stagesOfBuild[stage - 2][i]);
             }
-            
+
             stage--;
         }
     }

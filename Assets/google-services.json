@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "705776346334",
+    "firebase_url": "https://testdatabasedrones-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "testdatabasedrones",
+    "storage_bucket": "testdatabasedrones.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705776346334:android:0d648ab86ef1f60686ce4f",
+        "android_client_info": {
+          "package_name": "com.KosmoAssemler"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdsiIgLoE_Npp8Fk88W4iqLtTu1TuBCoc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
