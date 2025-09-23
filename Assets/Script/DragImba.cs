@@ -23,19 +23,28 @@ public class DragImba : MonoBehaviour , IDragHandler, IEndDragHandler
             case 2:
                 if (ScaleTrue)
                 {
-                float delthaTouchDistance = touchDistance - Vector2.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position);
-                touchDistance = Vector2.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position);
-                if (kostil)
-                {
-                    //ограничения
-                    if (mainObject.localScale.x+(delthaTouchDistance * modScale) >= 10F && mainObject.localScale.x+(delthaTouchDistance * modScale) <= 100F){
-                        mainObject.localScale += new Vector3(delthaTouchDistance * modScale, delthaTouchDistance * modScale, delthaTouchDistance * modScale);
+                    float delthaTouchDistance = touchDistance - Vector2.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position);
+                    touchDistance = Vector2.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position);
+                    if (kostil)
+                    {
+                        //ограничения
+                        //if (mainObject.localScale.x + (delthaTouchDistance * modScale) >= baseScale / baseScaleMax && mainObject.localScale.x + (delthaTouchDistance * modScale) <= baseScale * baseScaleMax)
+                        //{
+                        if (mainObject.localScale.x >= 0)
+                        {
+                            mainObject.localScale += new Vector3(delthaTouchDistance * modScale, delthaTouchDistance * modScale, delthaTouchDistance * modScale);
+                        }
+                        else
+                        {
+                            mainObject.localScale -= new Vector3(delthaTouchDistance * modScale, delthaTouchDistance * modScale, delthaTouchDistance * modScale);
+                        }
+                        
+                        //}
                     }
-                }
-                else
-                {
-                    kostil = true;
-                }
+                    else
+                    {
+                        kostil = true;
+                    }
                 }
                 break;
             default:
