@@ -73,8 +73,6 @@ public class AdapterScroll : MonoBehaviour
             var instance = GameObject.Instantiate(prefabItem.gameObject) as GameObject;
             instance.transform.SetParent(content, false);
 
-            //убрать в итоговой реализации
-            instance.GetComponent<Toggle>().isOn = true;
             InitializeItemView(instance, model);
         }
     }
